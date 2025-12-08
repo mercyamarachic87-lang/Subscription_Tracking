@@ -7,6 +7,8 @@ export const createSubscription = async (req, res, next) => {
             user: req.user._id
         });
 
+        await workflowClient
+
         res.status(201).json({ success: true, data: subscription });
     } catch (e) {
         next(e);
