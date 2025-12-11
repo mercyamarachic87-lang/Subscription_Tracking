@@ -35,5 +35,11 @@ app.listen(PORT,async () => {
    await connectToDatabase()
 })
 
+console.log("Loaded routes:");
+app._router.stack.forEach((m) => {
+    if (m.route) {
+        console.log(`${Object.keys(m.route.methods)[0].toUpperCase()} ${m.route.path}`);
+    }
+});
 
 export default app
