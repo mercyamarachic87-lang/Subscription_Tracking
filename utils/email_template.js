@@ -1,6 +1,10 @@
 // email_template.js
 
-export const emailTemplates = {
+export const emailTemplates = [
+    {
+        label: 'subscriptionReminder',
+        generateSubject: (info) => `Upcoming Billing Reminder - ${info.subscriptionName}`,
+        generateBody: (info) => '...',
     subscriptionCreated: (serviceName, amount, date) => `
     <h2>Subscription Created</h2>
     <p>You have successfully added a new subscription.</p>
@@ -28,4 +32,5 @@ export const emailTemplates = {
     <h2>${title}</h2>
     <p>${message}</p>
   `
-};
+},
+]

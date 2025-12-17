@@ -55,13 +55,13 @@ const subscriptionSchema = new mongoose.Schema({
             },
             message: 'renewal date must be after the start date',
         },
-        user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-            required: true,
-           index: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+        index: true
 
-        }
     }
 
 }, {timestamps: true});

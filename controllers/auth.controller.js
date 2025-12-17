@@ -4,14 +4,15 @@ import jwt from "jsonwebtoken";
 
 import User from '../model/user.model.js';
 import {JWT_EXPIRES_IN, JWT_SECRET} from "../config/env.js";
+import res from "express/lib/response.js";
+import req from "express/lib/request.js";
 
 export const signUp = async (req, res, next) => {
     // Implement sign up logic here
     const session = await mongoose.startSession();
     session.startTransaction();
 
-    User.findOne = async function (payload) {
-        
+
     };
     try{
         // Logic to create a new user
@@ -55,7 +56,7 @@ export const signUp = async (req, res, next) => {
         await session.endSession();
             next(error);
     }
-}
+
 
 export const signIn = async (req, res, next) => {
     try{
@@ -89,12 +90,23 @@ export const signIn = async (req, res, next) => {
         })
 
     }catch(error) {
+        next(error);
 
     }
 
 }
 
 export const signOut = async (req, res, next) => {
+    try{
+        res.clearCookie('token');
+
+        res.status(200).json({
+            success: true,
+            message: 'User signed out successfully'
+        })
+    }catch(error){
+        next(error);
+    }
 
 
 }

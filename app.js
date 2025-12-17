@@ -21,9 +21,10 @@ app.use(cookieParser());
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/user', userRouter)
 app.use('/api/v1/subscription', subscriptionRouter)
-app.use(errorMiddleware);
 app.use(arcjetMiddleware);
 app.use('/api/v1/workflows', workflowRouter)
+app.use(errorMiddleware);
+
 
 app.get('/', (req, res) => {
     res.send('Welcome to the subscription Tracker API');
